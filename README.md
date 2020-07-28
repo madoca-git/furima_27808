@@ -47,11 +47,11 @@ Things you may want to cover:
 |image|text|null: false|
 |name|string|null: false|
 |explanation|text|null: false|
-|category_id|string|null: false|
-|status_id|string|null: false|
-|delivary_fee_id|string|null: false|
-|delivery_form_id|string|null: false|
-|delivery_days_id|string|null: false|
+|category_id|integer|null: false|
+|status_id|integer|null: false|
+|delivary_fee_id|integer|null: false|
+|delivery_form_id|integer|null: false|
+|delivery_days_id|integer|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -70,6 +70,7 @@ Things you may want to cover:
 |municipalities|string|null: false|
 |street|string|null: false|
 |buildings|string||
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
