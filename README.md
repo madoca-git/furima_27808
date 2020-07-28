@@ -37,7 +37,6 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
-- has_many :comments
 - has_many :orders
 
 
@@ -56,8 +55,8 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :comments
 - has_one :address
+- has_one :order
 - belongs_to :user
 
 
@@ -76,10 +75,9 @@ Things you may want to cover:
 - belongs_to :item
 
 
-## commentsテーブル
+## orderssテーブル
 |Column|Type|Options|
 |------|----|-------|
-|comment|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
