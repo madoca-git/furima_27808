@@ -64,7 +64,7 @@ Things you may want to cover:
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|phone_number|integer|null: false|
+|phone_number|string|null: false|
 |postal_code|string|null: false|
 |prefecture_id|integer|null: false|
 |municipalities|string|null: false|
