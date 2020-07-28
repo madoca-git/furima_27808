@@ -57,18 +57,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :comments
-- has_one :order
-- belongs_to :user
-
-
-## ordersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-
-### Association
 - has_one :address
-- belongs_to :item
 - belongs_to :user
 
 
@@ -83,7 +72,7 @@ Things you may want to cover:
 |buildings|string||
 
 ### Association
-- belongs_to :order
+- belongs_to :item
 
 
 ## commentsテーブル
