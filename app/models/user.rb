@@ -7,21 +7,20 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders
 
+  validates_uniqueness_of :nickname, case_sensitive: true
+
   with_options presence: true do
     validates :nickname
     validates :birthday
-    validates :password, length: { minimum: 6 }, format: { with: /\A[a-z0-9]+\z/i }
-    
-    with_options format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ } do
-      validates :last_name
-      validates :first_name
-    end
-    
+    validates :password, format: { with: /\A[a-z0-9]+\z/i }
+
+    VALID_PASSWORD_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/.freeze
+    validates :last_name, format: { with: VALID_PASSWORD_REGEX }
+    validates :first_name, format: { with: VALID_PASSWORD_REGEX }
+
     with_options format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ } do
       validates :last_name_kana
       validates :first_name_kana
     end
-    
   end
-
 end
