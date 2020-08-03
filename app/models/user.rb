@@ -7,20 +7,21 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders
 
-  validates :nickname, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
+    validates :password, length: { minimum: 6 }, format: { with: /\A[a-z0-9]+\z/i }
+    
+    with_options format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ } do
+      validates :last_name
+      validates :first_name
+    end
+    
+    with_options format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ } do
+      validates :last_name_kana
+      validates :first_name_kana
+    end
+    
+  end
 
-  # validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-
-  # has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, format: { with: /\A[a-z0-9]+\z/i }
-
-  validates :last_name, presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
-
-  validates :first_name, presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
-
-  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
-
-  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
-
-  validates :birthday, presence: true
 end
