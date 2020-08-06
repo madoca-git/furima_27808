@@ -6,23 +6,22 @@ class Item < ApplicationRecord
   belongs_to_active_hash :form
   belongs_to_active_hash :day
 
-  
   belongs_to :user
   has_one :address
   has_one :order
   has_one_attached :image
 
-  #価格の範囲が、¥300~¥9,999,999の間であること
+  # 価格の範囲が、¥300~¥9,999,999の間であること
   validates :price,
-  numericality: {
-    greater_than_or_equal_to: 300,
-    less_than: 100000000
-  }
+            numericality: {
+              greater_than_or_equal_to: 300,
+              less_than: 100_000_000
+            }
 
-  #空の投稿を保存できないようにする
+  # 空の投稿を保存できないようにする
   validates :name, :image, :explanation, :category_id, :status_id, :delivary_fee_id, :delivary_form_id, :delivary_days_id, :price, presence: true
 
-  #選択が「--」のままになっていないか
+  # 選択が「--」のままになっていないか
   with_options numericality: { other_than: 1 } do
     validates :category_id, :status_id, :delivary_fee_id, :delivary_form_id, :delivary_days_id
   end
