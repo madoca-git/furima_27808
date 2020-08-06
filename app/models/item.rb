@@ -19,10 +19,10 @@ class Item < ApplicationRecord
             }
 
   # 空の投稿を保存できないようにする
-  validates :name, :image, :explanation, :category_id, :status_id, :delivary_fee_id, :delivary_form_id, :delivary_days_id, :price, presence: true
+  validates :name, :image, :explanation, :category_id, :status_id, :fee_id, :form_id, :day_id, :price, presence: true
 
   # 選択が「--」のままになっていないか
   with_options numericality: { other_than: 1 } do
-    validates :category_id, :status_id, :delivary_fee_id, :delivary_form_id, :delivary_days_id
+    validates :category_id, :status_id, :fee_id, :form_id, :day_id
   end
 end

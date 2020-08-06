@@ -7,8 +7,8 @@ describe Item do
       @item.image = fixture_file_upload('/files/test_image.jpg')
     end
 
-    # 1. image、name、explanation、category_id、status_id、delivary_fee_id、delivary_form_id、delivary_days_id、price、user_idが存在すれば登録できること
-    it 'is valid with an image, name, explanation, category_id, status_id, delivary_fee_id, delivary_form_id, delivary_days_id, price, user_id' do
+    # 1. image、name、explanation、category_id、status_id、fee_id、form_id、day_id、price、user_idが存在すれば登録できること
+    it 'is valid with an image, name, explanation, category_id, status_id, fee_id, form_id, day_id, price, user_id' do
       expect(@item).to be_valid
     end
 
@@ -40,25 +40,25 @@ describe Item do
       expect(@item.errors[:status_id]).to include('は1以外の値にしてください')
     end
 
-    # 6. delivary_fee_idが1では登録できないこと
-    it 'is invalid with a delivary_fee_id has 1' do
-      @item.delivary_fee_id = '1'
+    # 6. fee_idが1では登録できないこと
+    it 'is invalid with a fee_id has 1' do
+      @item.fee_id = '1'
       @item.valid?
-      expect(@item.errors[:delivary_fee_id]).to include('は1以外の値にしてください')
+      expect(@item.errors[:fee_id]).to include('は1以外の値にしてください')
     end
 
-    # 7. delivary_form_idが1では登録できないこと
-    it 'is invalid with a delivary_form_id has 1' do
-      @item.delivary_form_id = '1'
+    # 7. form_idが1では登録できないこと
+    it 'is invalid with a form_id has 1' do
+      @item.form_id = '1'
       @item.valid?
-      expect(@item.errors[:delivary_form_id]).to include('は1以外の値にしてください')
+      expect(@item.errors[:form_id]).to include('は1以外の値にしてください')
     end
 
-    # 8. delivary_days_idが1では登録できないこと
-    it 'is invalid with a delivary_days_id has 1' do
-      @item.delivary_days_id = '1'
+    # 8. day_idが1では登録できないこと
+    it 'is invalid with a day_id has 1' do
+      @item.day_id = '1'
       @item.valid?
-      expect(@item.errors[:delivary_days_id]).to include('は1以外の値にしてください')
+      expect(@item.errors[:day_id]).to include('は1以外の値にしてください')
     end
 
     # 9. priceが空では登録できないこと
