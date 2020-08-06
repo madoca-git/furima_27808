@@ -4,9 +4,9 @@ FactoryBot.define do
     explanation       { 'テストです' }
     category_id       { '2' }
     status_id         { '3' }
-    delivary_fee_id   { '2' }
-    delivary_form_id  { '30' }
-    delivary_days_id  { '3' }
+    fee_id            { '2' }
+    form_id           { '30' }
+    day_id            { '3' }
     price             { '5000' }
     user
   end

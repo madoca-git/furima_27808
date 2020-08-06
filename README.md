@@ -48,9 +48,9 @@ Things you may want to cover:
 |explanation|text|null: false|
 |category_id|integer|null: false|
 |status_id|integer|null: false|
-|delivary_fee_id|integer|null: false|
-|delivary_form_id|integer|null: false|
-|delivary_days_id|integer|null: false|
+|fee_id|integer|null: false|
+|form_id|integer|null: false|
+|day_id|integer|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
