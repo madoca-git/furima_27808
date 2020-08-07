@@ -24,12 +24,21 @@ class ItemsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    item = Item.find_by(id: params[:id])
+    if item.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
@@ -54,9 +63,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
-
 end
