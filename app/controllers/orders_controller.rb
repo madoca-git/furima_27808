@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:create, :show, :pay]
+
   def create
     @order = ItemOrder.new(order_params)
     if @order.valid?
@@ -6,20 +8,19 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to root_path
     else
-      @item = Item.find_by(id: params[:item_id])
       render :show
     end
   end
 
-  def show
-    @item = Item.find_by(id: params[:item_id])
-    redirect_to root_path if current_user.id == @item.user_id
 
+  def show
+    redirect_to root_path if current_user.id == @item.user_id
     redirect_to root_path if @item.order.present?
   end
 
+  private
+
   def pay
-    @item = Item.find_by(id: params[:item_id])
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
@@ -27,8 +28,6 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-
-  private
 
   def order_params
     params.permit(
@@ -40,5 +39,9 @@ class OrdersController < ApplicationController
       :token,
       :building
     ).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def set_order
+    @item = Item.find_by(id: params[:item_id])
   end
 end
