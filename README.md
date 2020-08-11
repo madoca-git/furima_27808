@@ -65,7 +65,7 @@ Things you may want to cover:
 |------|----|-------|
 |phone_number|string|null: false|
 |postal_code|string|null: false|
-|prefecture_id|integer|null: false|
+|form_id|integer|null: false|
 |municipalities|string|null: false|
 |street|string|null: false|
 |buildings|string||
