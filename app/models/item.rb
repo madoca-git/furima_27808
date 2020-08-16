@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :address
   has_one :order
-  has_one_attached :image
+  has_many_attached :images
 
   # 価格の範囲が、¥300~¥9,999,999の間であること
   validates :price,
@@ -19,7 +19,7 @@ class Item < ApplicationRecord
             }
 
   # 空の投稿を保存できないようにする
-  validates :name, :image, :explanation, :category_id, :status_id, :fee_id, :form_id, :day_id, :price, presence: true
+  validates :name, :images, :explanation, :category_id, :status_id, :fee_id, :form_id, :day_id, :price, presence: true
 
   # 選択が「--」のままになっていないか
   with_options numericality: { other_than: 1 } do

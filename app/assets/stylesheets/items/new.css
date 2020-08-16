@@ -146,7 +146,6 @@
 }
 
 .price-text {
-  /* min-width: 170px; */
   display: flex;
   align-items: center;
 }
@@ -226,4 +225,20 @@
 
 .inc {
   font-size: 13px;
+}
+
+.item-image__operetion--delete {
+  color: #ea352d;
+  cursor: pointer;
+  text-align: center;
+}
+
+.image-box {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.item-image {
+  padding: 0 10px;
 }
