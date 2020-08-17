@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :form
   belongs_to_active_hash :day
 
+  has_many :messages
   belongs_to :user
   has_one :address
   has_one :order

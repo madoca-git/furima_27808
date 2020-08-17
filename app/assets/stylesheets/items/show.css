@@ -236,3 +236,17 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.comment {
+
+  width: 40vw;
+}
+
+.text {
+  width: 40vw;
+  /* height: 100px; */
+  padding: 10px;
+  border: solid 2px #dedede;
+  margin-bottom: 5px;
+  text-align: left;
+}

@@ -9,9 +9,14 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-
+  
   def create
     # binding.pry
+    # @message = Message.new(message_params)
+    # if @message.save
+    #   ActionCable.server.broadcast 'message_channel', content: @message
+    # end
+
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -19,8 +24,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def show
+    @messages = Message.all
+    @message = Message.new
   end
 
   def edit
@@ -58,6 +65,12 @@ class ItemsController < ApplicationController
       images: []
     ).merge(user_id: current_user.id)
   end
+
+  # def message_params
+  #   params.require(:message).permit(
+  #     :text
+  #   ).merge(user_id: current_user.id, item_id: @item.id)
+  # end
 
   def set_item
     @item = Item.find_by(id: params[:id])
