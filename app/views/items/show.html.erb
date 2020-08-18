@@ -100,17 +100,17 @@
   <div class="comment-box">
     <%# <form> %>
       <%# <textarea class="comment-text"></textarea> %>
-      <%= form_with model: [@item,@message], url: item_messages_path(@item), local: true do |f| %>
-        <%= f.text_area :text, class:"comment-text" %>
+      <%= form_with model: [@item,@message], url: item_messages_path(@item), remote: true do |f| %>
         <%# <%binding.pry  %>
-    <% if @item.messages.present? %>
       <div id='messages', class='comment'>
-        <% @item.messages.each do |message| %>
-          <p class='text'><%= message.text %></p>
+        <% if @item.messages.present? %>
+          <% @item.messages.each do |message| %><%#新しいメッセージが上に来るように回す%>
+            <p class='text'><%= message.text %></p>
+          <% end %>
         <% end %>
       </div>
-    <% end %>
       
+        <%= f.text_area :text, class:"comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>

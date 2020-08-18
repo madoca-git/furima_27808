@@ -10,10 +10,12 @@ consumer.subscriptions.create("MessageChannel", {
   },
 
   received(data) {
-    const html = `<p class='text'>${data.content.text}</p>`;
+    const html = `<div class='text'>
+                    ${data.content.text}
+                  </div>`;
     const messages = document.getElementById('messages');
     const newMessage = document.getElementById('message_text');
-    messages.insertAdjacentHTML('beforebegin', html);
+    messages.insertAdjacentHTML('beforeend', html);
     newMessage.value='';
     $('.comment-btn').prop("disabled", false);
   }
