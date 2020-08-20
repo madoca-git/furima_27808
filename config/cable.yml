@@ -2,10 +2,10 @@ development:
   adapter: async
 
 test:
-  adapter: test
+  adapter: async
 
 production:
   adapter: redis
-  url: redis://54.178.18.113
+  url: redis://54.178.18.113:6381
   channel_prefix: furima_27808_production
   # adapter: async
