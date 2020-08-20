@@ -4,4 +4,4 @@ require_relative 'config/environment'
 
 run Rails.application
 
-use Rack::Timeout, service_timeout: 5
+# use Rack::Timeout, service_timeout: 5
