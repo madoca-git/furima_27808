@@ -7,23 +7,25 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day
 
   has_many :messages
+  has_many :item_tag_relations, dependent: :destroy
+  has_many :tags, through: :item_tag_relations, dependent: :destroy
   belongs_to :user
   has_one :address
   has_one :order
   has_many_attached :images
 
-  # 価格の範囲が、¥300~¥9,999,999の間であること
-  validates :price,
-            numericality: {
-              greater_than_or_equal_to: 300,
-              less_than: 100_000_000
-            }
+  # # 価格の範囲が、¥300~¥9,999,999の間であること
+  # validates :price,
+  #           numericality: {
+  #             greater_than_or_equal_to: 300,
+  #             less_than: 100_000_000
+  #           }
 
-  # 空の投稿を保存できないようにする
-  validates :name, :images, :explanation, :category_id, :status_id, :fee_id, :form_id, :day_id, :price, presence: true
+  # # 空の投稿を保存できないようにする
+  # validates :name, :images, :explanation, :category_id, :status_id, :fee_id, :form_id, :day_id, :price, presence: true
 
-  # 選択が「--」のままになっていないか
-  with_options numericality: { other_than: 1 } do
-    validates :category_id, :status_id, :fee_id, :form_id, :day_id
-  end
+  # # 選択が「--」のままになっていないか
+  # with_options numericality: { other_than: 1 } do
+  #   validates :category_id, :status_id, :fee_id, :form_id, :day_id
+  # end
 end

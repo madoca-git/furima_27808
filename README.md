@@ -38,6 +38,9 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :orders
+- has_many :user_tag_relations
+- has_many :tags, through: :user_tag_relations
+
 
 
 ## itemsテーブル
@@ -57,7 +60,47 @@ Things you may want to cover:
 ### Association
 - has_one :address
 - has_one :order
+- has_many :item_tag_relations
+- has_many :tags, through: :item_tag_relations
 - belongs_to :user
+
+
+
+## item_tag_relationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|integer|null: false, foreign_key: true|
+|tag_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :tag
+
+
+
+## user_tag_relationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|tag_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :tag
+
+
+
+## tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|tag_name|string|null: false|
+
+### Association
+- has_many :item_tag_relations
+- has_many :items, through: :item_tag_relations
+- has_many :user_tag_relations
+- has_many :users, through: :user_tag_relations
+
 
 
 ## addressesテーブル
