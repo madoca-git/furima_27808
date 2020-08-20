@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
+  has_many :user_tag_relations
+  has_many :tags, through: :user_tag_relations
+
 
   validates_uniqueness_of :nickname, case_sensitive: true
 

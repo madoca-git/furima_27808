@@ -1,6 +1,6 @@
-// if (window.location.pathname === '/items/id/orders/id') {
+if (window.location.pathname === '/items/:item_id/orders/:id') {
   const pay = () => {
-    
+
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
     const form = document.getElementById("charge-form");
     form.addEventListener("submit", (e) => {
@@ -37,4 +37,4 @@
     });
   };
   window.addEventListener("load", pay);
-// }
+}

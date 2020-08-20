@@ -1,4 +1,4 @@
-if (window.location.pathname === '/items/new') {
+if (window.location.pathname === '/items/new', '/items/:id/edit') {
   $(function(){
     //DataTransferオブジェクトで、データを格納する箱を作る
     var dataBox = new DataTransfer();

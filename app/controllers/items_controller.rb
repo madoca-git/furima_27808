@@ -1,82 +1,95 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :move_to_index, except: [:index, :show]
+	before_action :set_item, only: [:show, :edit, :update]
+	before_action :move_to_index, except: [:index, :show]
 
-  def index
-    @items = Item.order('created_at DESC')
-  end
+	def index
+		@items = Item.order('created_at DESC')
+	end
 
-  def new
-    @item = Item.new
-  end
-  
-  def create
-    # binding.pry
-    # @message = Message.new(message_params)
-    # if @message.save
-    #   ActionCable.server.broadcast 'message_channel', content: @message
-    # end
+	def new
+		@item = Item.new
+	end
 
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-  
-  def show
-    @messages = Message.all
-    @message = Message.new
-  end
+	def create
+		@item = ItemTag.new(item_tag_params)
+		if @item.valid?
+			@item.save
+			redirect_to root_path
+		else
+			render :new
+		end
+	end
 
-  def edit
-  end
+	def show
+		@messages = Message.all
+		@message = Message.new
+		@tagname = @item.tags[0][:tag_name]
+	end
 
-  def update
-    if @item.update(item_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
+	def edit
+		# @item.images.cache!
+	end
 
-  def destroy
-    item = Item.find_by(id: params[:id])
-    if item.destroy
-      redirect_to root_path
-    else
-      render :show
-    end
-  end
+	def update
+		@tag = ItemTag.new(item_tag_params)
 
-  private
+		if @tag.update(params[:id])
+			@item.update(tag_params)
+			redirect_to root_path
+		else
+			render :edit
+		end
+	end
 
-  def item_params
-    params.require(:item).permit(
-      :name,
-      :explanation,
-      :category_id,
-      :status_id,
-      :fee_id,
-      :form_id,
-      :day_id,
-      :price,
-      images: []
-    ).merge(user_id: current_user.id)
-  end
+	def destroy
+		item = Item.find_by(id: params[:id])
+		if item.destroy!
+			redirect_to root_path
+		else
+			render :show
+		end
+	end
 
-  # def message_params
-  #   params.require(:message).permit(
-  #     :text
-  #   ).merge(user_id: current_user.id, item_id: @item.id)
-  # end
+	def search
+		return nil if params[:input] == ""
+		tag = Tag.where(['tag_name LIKE ?', "%#{params[:input]}%"] )
+		render json:{ keyword: tag }
+	 end
 
-  def set_item
-    @item = Item.find_by(id: params[:id])
-  end
+	private
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
-  end
+	def item_tag_params
+		params.require(:item).permit(
+			:tag_name,
+			:name,
+			:explanation,
+			:category_id,
+			:status_id,
+			:fee_id,
+			:form_id,
+			:day_id,
+			:price,
+			images: []).merge(user_id: current_user.id)
+	end
+
+	def tag_params
+		params.require(:item).permit(
+			:name,
+			:explanation,
+			:category_id,
+			:status_id,
+			:fee_id,
+			:form_id,
+			:day_id,
+			:price,
+			images: []).merge(user_id: current_user.id)
+	end
+
+	def set_item
+		@item = Item.find_by(id: params[:id])
+	end
+
+	def move_to_index
+		redirect_to action: :index unless user_signed_in?
+	end
 end

@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'   
-  } 
+    sessions: 'users/sessions'
+  }
 
   devise_scope :user do
     get "sign_in", to: "sessions#new"
     post "sign_in",   to: 'sessions#create'
-    delete "sign_out", to: "sessions#destroy" 
+    delete "sign_out", to: "sessions#destroy"
     get 'users/:id', to: 'users#show'
   end
 
   resources :users
   resources :items do
+    collection do
+      get 'search'
+    end
     resources :messages
     resources :orders
   end
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "items#index"
+  root to: "items#index"
+  delete 'items/:id' => 'itemss#destroy'
 
 end

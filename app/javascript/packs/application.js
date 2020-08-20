@@ -10,6 +10,7 @@ require('jquery')
 require("../card")
 require('../item_new')
 require('./preview')
+require("../tag")
 
 
 
