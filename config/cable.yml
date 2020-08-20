@@ -6,6 +6,6 @@ test:
 
 production:
   adapter: redis
-  url: redis://54.178.18.113/.cache.amazonaws.com:6379
+  url: redis://54.178.18.113
   channel_prefix: furima_27808_production
   # adapter: async
