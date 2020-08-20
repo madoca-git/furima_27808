@@ -6,6 +6,6 @@ test:
 
 production:
   adapter: redis
-  url: redis://54.178.18.113:3000
+  url: redis://54.178.18.113
   channel_prefix: furima_27808_production
   # adapter: async
