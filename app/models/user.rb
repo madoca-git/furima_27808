@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :tags, through: :user_tag_relations
   has_many :likes, dependent: :destroy
   has_many :liked_items, through: :likes, source: :item
+  has_one  :name
   def already_liked?(item)
     likes.exists?(item_id: item.id)
   end
@@ -18,16 +19,15 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :birthday
+    # validates :birthday
     validates :password, format: { with: /\A[a-z0-9]+\z/i }
 
-    VALID_PASSWORD_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/.freeze
-    validates :last_name, format: { with: VALID_PASSWORD_REGEX }
-    validates :first_name, format: { with: VALID_PASSWORD_REGEX }
+    # VALID_PASSWORD_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/.freeze
+    # validates :last_name, format: { with: VALID_PASSWORD_REGEX }
+    # validates :first_name, format: { with: VALID_PASSWORD_REGEX }
 
-    with_options format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ } do
-      validates :last_name_kana
-      validates :first_name_kana
-    end
+    # with_options format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ } do
+    #   validates :last_name_kana
+    #   validates :first_name_kana
   end
 end
