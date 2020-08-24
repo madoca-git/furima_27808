@@ -19,7 +19,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%binding.pry%>
+
         <% @item.images.each do |image|%>
           <%= f.file_field :images, type: 'file', name:'item[images][]', id:"img-file", value: image %>
         <% end %>
