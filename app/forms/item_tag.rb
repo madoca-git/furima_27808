@@ -17,7 +17,6 @@ class ItemTag
     validates :category_id, :status_id, :fee_id, :form_id, :day_id
   end
 
-
   # items_controller の create アクション
   def save
     item = Item.create!(
@@ -38,27 +37,36 @@ class ItemTag
     ItemTagRelation.create!(item_id: item.id, tag_id: tag.id)
   end
 
-
   # items_controller の update アクション
-  def update(id)
-    item = Item.find(id)
-    # item.update!(
-    #   name: name,
-    #   images: images,
-    #   explanation: explanation,
-    #   category_id: category_id,
-    #   status_id: status_id,
-    #   fee_id: fee_id,
-    #   form_id: form_id,
-    #   day_id: day_id,
-    #   price: price,
-    #   user_id: user_id
-    # )
+  def update
+    if images
+      Item.update(
+        name: name,
+        images: images,
+        explanation: explanation,
+        category_id: category_id,
+        status_id: status_id,
+        fee_id: fee_id,
+        form_id: form_id,
+        day_id: day_id,
+        price: price,
+        user_id: user_id
+      )
+    else
+      Item.update(
+        name: name,
+        explanation: explanation,
+        category_id: category_id,
+        status_id: status_id,
+        fee_id: fee_id,
+        form_id: form_id,
+        day_id: day_id,
+        price: price,
+        user_id: user_id
+      )
+    end
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
-    ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
+    ItemTagRelation.update(tag_id: tag.id)
   end
-
-
-
 end

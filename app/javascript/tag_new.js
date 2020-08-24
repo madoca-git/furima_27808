@@ -1,11 +1,13 @@
-if (location.pathname.match("items/new")){
+// if (location.pathname.match("items/new")){
   window.addEventListener("load", (e) => {
     const inputElement = document.getElementById("item_tag_name");
     inputElement.addEventListener("keyup", (e) => {
       const input = document.getElementById("item_tag_name").value;
+      console.log(input)
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", `search/?input=${input}`, true);
+      xhr.open("GET", `/items/search/?input=${input}`, true);
       xhr.responseType = "json";
+      // console.log(xhr.response)
       xhr.send();
       xhr.onload = () => {
         const tagName = xhr.response.keyword;
@@ -34,4 +36,4 @@ if (location.pathname.match("items/new")){
       }
     });
   })
- };
+//  };

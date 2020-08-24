@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.save
       ActionCable.server.broadcast 'message_channel', content: @message
-    # binding.pry
+      # binding.pry
     end
     # binding.pry
   end

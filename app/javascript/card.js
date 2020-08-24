@@ -1,4 +1,4 @@
-if (window.location.pathname === '/items/:item_id/orders/:id') {
+// if (window.location.pathname === '/items/:item_id/orders/:id') {
   const pay = () => {
 
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
@@ -37,4 +37,4 @@ if (window.location.pathname === '/items/:item_id/orders/:id') {
     });
   };
   window.addEventListener("load", pay);
-}
+// }

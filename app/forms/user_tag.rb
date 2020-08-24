@@ -19,14 +19,14 @@ class UserTag
 
   # def save
   #   item = Item.create(
-  #     name: name, 
-  #     imagesg: images, 
-  #     explanation: explanation, 
-  #     category_id: category_id, 
-  #     status_id: status_id, 
-  #     fee_id: fee_id, 
-  #     form_id: form_id, 
-  #     day_id: day_id, 
+  #     name: name,
+  #     imagesg: images,
+  #     explanation: explanation,
+  #     category_id: category_id,
+  #     status_id: status_id,
+  #     fee_id: fee_id,
+  #     form_id: form_id,
+  #     day_id: day_id,
   #     price: price
   #   )
 

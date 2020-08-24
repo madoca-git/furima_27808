@@ -136,20 +136,40 @@
   position: relative;
 }
 
+.label{
+  width: 15vw;
+  border-radius: 40px;
+  min-width: 200px;
+  margin-right: 5px;
+}
+
 .favorite-btn {
   border-radius: 40px;
   width: 15vw;
   min-width: 200px;
   color: rgb(249, 75, 0);
+  font-weight: bold;
   border: 2px solid #ffb340;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+  padding: 1vh 0;
 }
+
+
+
+.favorite-btn:hover {
+  cursor: pointer;
+  background-color: #ffb340;
+}
+
 
 .favorite-star-icon {
   margin-right: 5px;
+}
+
+.favorite-star-icon:hover {
 }
 
 .report-btn {
@@ -163,6 +183,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 5px;
 }
 
 .report-flag-icon {
@@ -251,4 +272,27 @@
   border: solid 2px #dedede;
   margin-bottom: 5px;
   text-align: left;
+}
+
+.input-btn {
+  margin-right: 5px;
+  border-style: none;
+  background-color: #fff;
+  outline: 0;
+
+}
+
+
+.input-btn:hover {
+  cursor: pointer;
+}
+
+.favorite{
+  display: none;
+}
+
+.heart {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 30px;
 }

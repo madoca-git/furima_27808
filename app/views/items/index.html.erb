@@ -24,7 +24,7 @@
     <h2 class='title'>
       FURIMAが選ばれる3つの理由
     </h2>
-    
+
     <ul class='reason-lists'>
       <li class='list'>
         <%= image_tag "furima-intro01.png", class:"list-pict" %>
@@ -134,22 +134,25 @@
           <% if item.order.present? %>
             <div class='sold-out'>
               <span>SOLD</span>
-            </div> 
+            </div>
           <% end %>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= item.name %>
+            【 <%= item.name %> 】
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br>(税込み)</span>
+            <span><%= item.price %>円  (税込み)</span>
             <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+              <P class="heart">♥</p>
+              <span class='star-count'><%= item.liked_users.count %></span>
             </div>
           </div>
         </div>
       <% end %>
+
+
+
       </li>
 
       <% end %>

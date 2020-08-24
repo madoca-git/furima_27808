@@ -8,7 +8,11 @@ class User < ApplicationRecord
   has_many :orders
   has_many :user_tag_relations
   has_many :tags, through: :user_tag_relations
-
+  has_many :likes, dependent: :destroy
+  has_many :liked_items, through: :likes, source: :item
+  def already_liked?(item)
+    likes.exists?(item_id: item.id)
+  end
 
   validates_uniqueness_of :nickname, case_sensitive: true
 

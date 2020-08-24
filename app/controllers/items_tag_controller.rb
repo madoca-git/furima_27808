@@ -1,5 +1,4 @@
 class ItemsTagController < ApplicationController
-
   # def new
   #   @item = ItemsTag.new
   # end
@@ -14,7 +13,6 @@ class ItemsTagController < ApplicationController
   #   end
   # end
 
-  
   # private
 
   # def item_tag_patams
@@ -30,5 +28,4 @@ class ItemsTagController < ApplicationController
   #     images: []
   #   ).merge(user_id: current_user.id)
   # end
-
 end

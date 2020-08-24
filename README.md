@@ -139,3 +139,14 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item

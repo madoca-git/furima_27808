@@ -9,6 +9,8 @@ class Item < ApplicationRecord
   has_many :messages
   has_many :item_tag_relations, dependent: :destroy
   has_many :tags, through: :item_tag_relations, dependent: :destroy
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
   belongs_to :user
   has_one :address
   has_one :order
