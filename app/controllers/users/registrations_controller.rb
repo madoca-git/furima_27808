@@ -24,11 +24,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_name
     @user = User.new(session['devise.regist_data']['user'])
     @name = Name.new(name_params)
-    render :new_name unless @name.valid?
+    render :new_name and return unless @name.valid?
+
     @user.build_name(@name.attributes)
     @user.save
     session['devise.regist_data']['user'].clear
-    sign_in(:user, @user)
+    sign_in @user
     redirect_to :root
   end
 

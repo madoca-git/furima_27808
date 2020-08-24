@@ -154,3 +154,7 @@
   text-align: right;
   cursor: pointer;
 }
+
+.field_with_errors {
+  display: inline;
+}
