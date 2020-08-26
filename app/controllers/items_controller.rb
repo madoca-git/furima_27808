@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index
     @items = Item.order('created_at DESC')
@@ -51,12 +51,15 @@ class ItemsController < ApplicationController
     end
   end
 
-  def search
+  def search_tag
     return nil if params[:input] == ''
-
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:input]}%"])
     render json: { keyword: tag }
-   end
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
+  end
 
   private
 

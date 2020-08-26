@@ -16,10 +16,15 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'search'
+      get 'search_tag'
     end
     resources :likes, only: [:create, :destroy]
     resources :messages
     resources :orders
+  end
+
+  namespace :api do
+    resources :categories, only: [:show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -5,7 +5,7 @@
       const input = document.getElementById("item_tag_name").value;
       console.log(input)
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", `/items/search/?input=${input}`, true);
+      xhr.open("GET", `/items/search_tag/?input=${input}`, true);
       xhr.responseType = "json";
       // console.log(xhr.response)
       xhr.send();
