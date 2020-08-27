@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
 
@@ -7,12 +8,12 @@ Rails.application.routes.draw do
     # get "sign_in", to: "sessions#new"
     # post "sign_in",   to: 'sessions#create'
     delete "sign_out", to: "sessions#destroy"
-    get 'users/:id', to: 'users#show'
+    get 'users/:id', to: 'users#new'
     get 'name', to: 'users/registrations#new_name'
     post 'name', to: 'users/registrations#create_name'
   end
 
-  resources :users
+  resources :users, only: :new
   resources :items do
     collection do
       get 'search'
