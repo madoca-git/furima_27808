@@ -68,7 +68,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1vh 0;
+  padding: 2vh 0;
 }
 
 .lists-left {
@@ -97,28 +97,63 @@
 
 .user-nickname {
   text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
-  font-weight: bold;
+  margin-right: 1vw;
+  color: #3ccace;
+  text-decoration: none;
+  border: 1px solid #3ccace;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.2s;
 }
+
+.user-nickname:hover {
+  color: white;
+  background-color: #3ccace;
+}
+
 
 
 .logout {
   text-decoration: none;
-  color: #333333;
-  // color: #ea352d;
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.logout:hover {
+  opacity: 0.6;
 }
 
 .login {
   text-decoration: none;
-  line-height: 32px;
-  margin-right: 3vw;
-  color: #333333;
+  line-height: 24px;
+  margin-right: 1vw;
+  color: #3ccace;
+  border: 1px solid #3ccace;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+.login:hover {
+  background-color: #3ccace;
+  color: white;
 }
 
 .sign-up {
   text-decoration: none;
-  color: #333333;
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.sign-up:hover {
+  opacity: 0.6;
 }
 
 .fa-search::before {
