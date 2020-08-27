@@ -17,11 +17,10 @@ class Item < ApplicationRecord
   has_many_attached :images
 
   def self.search(search)
-    if search != ""
+    if search != ''
       Item.where('name LIKE(?)', "%#{search}%")
     else
       Item.order('created_at DESC')
     end
   end
-
 end

@@ -4,5 +4,4 @@ class Name < ApplicationRecord
   with_options presence: true do
     validates :birthday
   end
-
 end

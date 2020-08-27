@@ -18,3 +18,43 @@
   text-align: center;
   color: red;
 }
+
+.login-form-wrap{
+  width: 60%;
+  height: 100%;
+ }
+
+.contents-top {
+  width: 100%;
+  min-width: 360px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.or {
+  font-size: 16px;
+}
+
+.login-form-header{
+  padding-top: 50px;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login-form-text-wrap {
+  width: 100%;
+  height: 20%;
+  margin-top: 30px;
+}
+
+/* .contents-bottom {
+  width: 100%;
+  min-width: 360px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+  height: 500px;
+} */

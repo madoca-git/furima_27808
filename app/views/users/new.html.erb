@@ -1,0 +1,28 @@
+<%= render "shared/second-header"%>
+
+<div class="registration-main">
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h1 class='registeration-header-text'>
+        <span class="under">登録方法をお選びください</span>
+      </h1>
+    </div>
+    <div class="form-group contents-btn">
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'registeration-content', method: :post do %>
+        <i class="fa fa-google">Googleで登録</i>
+      <% end %>
+    </div>
+    <div class="form-group contents-btn">
+      <%= link_to user_facebook_omniauth_authorize_path, class: 'registeration-content', method: :post do %>
+        <i class="fa fa-facebook-f">Facebookで登録</i>
+      <% end %>
+    </div>
+    <div class="form-group contents-btn">
+      <%= link_to new_user_registration_path, class: 'registeration-content' do %>
+        <i class="fa fa-envelope">メールアドレスで登録</i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/second-footer"%>
