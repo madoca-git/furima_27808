@@ -309,5 +309,5 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
   config.omniauth :facebook,ENV['FACEBOOK_CLIENT_ID'],ENV['FACEBOOK_CLIENT_SECRET'], scope: 'email', info_fields: 'email', callback_url: "https://ec2-54-178-18-113.ap-northeast-1.compute.amazonaws.com/users/auth/facebook/callback"
-  config.omniauth :google_oauth2,ENV['GOOGLE_CLIENT_ID'],ENV['GOOGLE_CLIENT_SECRET'], scope: 'email', info_fields: 'email', callback_url: "https://ec2-54-178-18-113.ap-northeast-1.compute.amazonaws.com/auth/google_oauth2/callback"
+  config.omniauth :google_oauth2,ENV['GOOGLE_CLIENT_ID'],ENV['GOOGLE_CLIENT_SECRET'], scope: 'email', info_fields: 'email', callback_url: "https://ec2-54-178-18-113.ap-northeast-1.compute.amazonaws.com/users/auth/google_oauth2/callback"
 end
